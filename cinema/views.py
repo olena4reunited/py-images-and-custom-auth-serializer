@@ -113,9 +113,13 @@ class MovieViewSet(
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(
+            serializer.data,
+            status=status.HTTP_201_CREATED,
+            headers=headers
+        )
 
-    @action(detail=True, methods=['POST'])
+    @action(detail=True, methods=["POST"])
     def upload_image(self, request, pk=None):
         movie = self.get_object()
         serializer = MovieImageSerializer(movie, data=request.data)
