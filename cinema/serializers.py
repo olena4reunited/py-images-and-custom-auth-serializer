@@ -70,6 +70,13 @@ class MovieDetailSerializer(MovieSerializer):
         )
 
 
+class MovieImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ["id", "image"]
+        read_only_fields = ["id"]
+
+
 class MovieSessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = MovieSession
