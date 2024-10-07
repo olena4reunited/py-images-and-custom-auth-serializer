@@ -33,16 +33,16 @@ class CinemaHallSerializer(serializers.ModelSerializer):
 class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = (
+        fields = [
             "id",
             "title",
             "description",
             "duration",
+            "image",
             "genres",
-            "actors",
-            "image"
-        )
-
+            "actors"
+        ]
+        read_only_fields = ["id"]
 
 class MovieListSerializer(MovieSerializer):
     genres = serializers.SlugRelatedField(
